@@ -65,9 +65,9 @@ function validateSingleSpec(singleSpecPath, callback) {
     console.log(`\n> Semantically validating  ${singleSpecPath}:\n`);
     validator = new SpecValidator(singleSpecPath);
     finalValidationResult[singleSpecPath] = validator.specValidationResult;
-    validator.validateSpec().then(function () {
+    validator.validateSpec(function (err, result) {
       updateEndResultOfSingleValidation(validator);
-      return;
+      return callback(null);
     });
   }
 }
