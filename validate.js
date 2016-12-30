@@ -57,17 +57,21 @@ function validateSingleSpec(singleSpecPath, callback) {
     console.log(`\n> Validating "examples" and "x-ms-examples" in ${singleSpecPath}:\n`);
     validator = new SpecValidator(singleSpecPath);
     finalValidationResult[singleSpecPath] = validator.specValidationResult;
-    validator.validateDataModels(function (err, result) {
+    validator.initialize().then(function() {
+      validator.validateOperations();
       updateEndResultOfSingleValidation(validator);
-      return callback(null);
+    }).catch(function (err) {
+      console.dir(err, {depth: null, colors: true});
     });
   } else if (cmd === 'spec') {
     console.log(`\n> Semantically validating  ${singleSpecPath}:\n`);
     validator = new SpecValidator(singleSpecPath);
     finalValidationResult[singleSpecPath] = validator.specValidationResult;
-    validator.validateSpec().then(function () {
+    validator.initialize().then(function() {
+      validator.validateSpec();
       updateEndResultOfSingleValidation(validator);
-      return;
+    }).catch(function(err) {
+      console.dir(err, {depth: null, colors: true});
     });
   }
 }

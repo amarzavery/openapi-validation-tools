@@ -24,6 +24,7 @@
     <Compile Include="lib\specValidator.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="validate-old.js" />
     <Compile Include="validate.js" />
     <Compile Include="lib\specValidatorTemp.js" />
     <Compile Include="lib\specValidator1 - Copy.js" />
