@@ -8,8 +8,12 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/lib/sample.js",
-            "cwd": "${workspaceRoot}"
+            "program": "${workspaceRoot}/cli.js",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "validate-spec",
+                "https://github.com/Azure/azure-rest-api-specs/blob/master/arm-network/2016-06-01/swagger/network.json"
+            ]
         },
         {
             "type": "node",
