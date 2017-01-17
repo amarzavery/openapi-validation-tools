@@ -38,15 +38,17 @@ exports.getDocumentsFromCompositeSwagger = function getDocumentsFromCompositeSwa
   });
 };
 
-exports.validateSpec = function validateSpec(specPath) {
+exports.validateSpec = function validateSpec(specPath, json) {
   let validator = new SpecValidator(specPath);
   exports.finalValidationResult[specPath] = validator.specValidationResult;
   validator.initialize().then(function() {
-    console.log(`\n> Semantically validating  ${specPath}:\n`);
+    log.info(`\n> Semantically validating  ${specPath}:\n`);
     validator.validateSpec();
-    return exports.updateEndResultOfSingleValidation(validator);
+    exports.updateEndResultOfSingleValidation(validator);
+    exports.logDetailedInfo(validator, json);
+    return;
   }).catch(function(err) {
-    console.dir(err, {depth: null, colors: true});
+    log.error(err);
     return;
   });
 };
@@ -59,46 +61,62 @@ exports.executeSequentially = function executeSequentially(promiseFactories) {
   return result;
 };
 
-exports.validateCompositeSpec = function validateCompositeSpec(compositeSpecPath){
+exports.validateCompositeSpec = function validateCompositeSpec(compositeSpecPath, json){
   return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function(docs) {
     let promiseFactories = docs.map(function(doc) {
-      return exports.validateSpec(doc);
+      return exports.validateSpec(doc, json);
     });
     return exports.executeSequentially(promiseFactories);
   }).catch(function (err) {
-    console.dir(err, {depth: null, colors: true});
+    log.error(err);
   });
 };
 
-exports.validateExamples = function validateExamples(specPath, operationIds) {
+exports.validateExamples = function validateExamples(specPath, operationIds, json) {
   let validator = new SpecValidator(specPath);
   exports.finalValidationResult[specPath] = validator.specValidationResult;
   validator.initialize().then(function() {
-    console.log(`\n> Validating "examples" and "x-ms-examples" in  ${specPath}:\n`);
+    log.info(`\n> Validating "examples" and "x-ms-examples" in  ${specPath}:\n`);
     validator.validateOperations(operationIds);
     exports.updateEndResultOfSingleValidation(validator);
+    exports.logDetailedInfo(validator, json);
+    return;
   }).catch(function (err) {
-    console.dir(err, {depth: null, colors: true});
+    log.error(err);
   });
 };
 
-exports.validateExamplesInCompositeSpec = function validateExamplesInCompositeSpec(compositeSpecPath){
+exports.validateExamplesInCompositeSpec = function validateExamplesInCompositeSpec(compositeSpecPath, json){
   return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function(docs) {
     let promiseFactories = docs.map(function(doc) {
-      return exports.validateExamples(doc);
+      return exports.validateExamples(doc, json);
     });
     return exports.executeSequentially(promiseFactories);
   }).catch(function (err) {
-    console.dir(err, {depth: null, colors: true});
+    log.error(err);
   });
 };
 
 exports.updateEndResultOfSingleValidation = function updateEndResultOfSingleValidation(validator) {
-  if (validator.specValidationResult.validityStatus) console.log('\n> No Errors were found.');
+  if (validator.specValidationResult.validityStatus) log.info('\n> No Errors were found.');
   if (!validator.specValidationResult.validityStatus) {
     exports.finalValidationResult.validityStatus = validator.specValidationResult.validityStatus;
   }
   return;
 }
+
+exports.logDetailedInfo = function logDetailedInfo(validator, json) {
+  if (json) {
+    log.transports.console.level = 'info';
+    log.info('############################');
+    log.info(validator.specValidationResult);
+    log.info('----------------------------');
+    log.transports.console.level = 'warn';
+  } else {
+    log.silly('############################');
+    log.silly(validator.specValidationResult);
+    log.silly('----------------------------');
+  }
+};
 
 exports = module.exports;

@@ -18,6 +18,7 @@ packages/*
 *.njsperf
 .vs/
 bin/*
+/.vscode/*
 
 #### win gitignore
 
