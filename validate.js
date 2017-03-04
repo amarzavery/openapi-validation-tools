@@ -25,7 +25,7 @@ exports.getDocumentsFromCompositeSwagger = function getDocumentsFromCompositeSwa
     }
     let docs = compositeSwagger.documents;
     let basePath = path.dirname(compositeSpecPath);
-    for (let i=0; i<docs.length; i++) {
+    for (let i = 0; i < docs.length; i++) {
       if (docs[i].startsWith('.')) {
         docs[i] = docs[i].substring(1);
       }
@@ -39,67 +39,82 @@ exports.getDocumentsFromCompositeSwagger = function getDocumentsFromCompositeSwa
     }
     return finalDocs;
   }).catch(function (err) {
+    log.error(err);
     return Promise.reject(err);
   });
 };
 
-exports.validateSpec = function validateSpec(specPath, json) {
+exports.validateSpec = function validateSpec(specPath, consoleLogLevel, logFilepath) {
+  log.consoleLogLevel = consoleLogLevel || log.consoleLevel;
+  log.filepath = logFilepath || log.filepath;
   let validator = new SpecValidator(specPath);
   exports.finalValidationResult[specPath] = validator.specValidationResult;
-  validator.initialize().then(function() {
+  return validator.initialize().then(function () {
     log.info(`Semantically validating  ${specPath}:\n`);
-    validator.validateSpec();
-    exports.updateEndResultOfSingleValidation(validator);
-    exports.logDetailedInfo(validator, json);
-    return;
-  }).catch(function(err) {
+    return validator.validateSpec().then(function (result) {
+      exports.updateEndResultOfSingleValidation(validator);
+      exports.logDetailedInfo(validator);
+      return Promise.resolve(validator.specValidationResult);
+    });
+  }).catch(function (err) {
     log.error(err);
-    return;
+    return Promise.reject(err);
   });
 };
 
-exports.validateCompositeSpec = function validateCompositeSpec(compositeSpecPath, json){
-  return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function(docs) {
-    let promiseFactories = docs.map(function(doc) {
-      return exports.validateSpec(doc, json);
+exports.validateCompositeSpec = function validateCompositeSpec(compositeSpecPath, consoleLogLevel, logFilepath) {
+  log.consoleLogLevel = consoleLogLevel || log.consoleLevel;
+  log.filepath = logFilepath || log.filepath;
+  return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function (docs) {
+    let promiseFactories = docs.map(function (doc) {
+      return function () { return exports.validateSpec(doc, consoleLogLevel, logFilepath) };
     });
     return utils.executePromisesSequentially(promiseFactories);
   }).catch(function (err) {
     log.error(err);
+    return Promise.reject(err);
   });
 };
 
-exports.validateExamples = function validateExamples(specPath, operationIds, json) {
+exports.validateExamples = function validateExamples(specPath, operationIds, consoleLogLevel, logFilepath) {
+  log.consoleLogLevel = consoleLogLevel || log.consoleLevel;
+  log.filepath = logFilepath || log.filepath;
   let validator = new SpecValidator(specPath);
   exports.finalValidationResult[specPath] = validator.specValidationResult;
-  validator.initialize().then(function() {
+  return validator.initialize().then(function () {
     log.info(`Validating "examples" and "x-ms-examples" in  ${specPath}:\n`);
     validator.validateOperations(operationIds);
     exports.updateEndResultOfSingleValidation(validator);
-    exports.logDetailedInfo(validator, json);
-    return;
+    exports.logDetailedInfo(validator);
+    return Promise.resolve(validator.specValidationResult);
   }).catch(function (err) {
     log.error(err);
+    return Promise.reject(err);
   });
 };
 
-exports.validateExamplesInCompositeSpec = function validateExamplesInCompositeSpec(compositeSpecPath, json){
-  return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function(docs) {
-    let promiseFactories = docs.map(function(doc) {
-      return exports.validateExamples(doc, json);
+exports.validateExamplesInCompositeSpec = function validateExamplesInCompositeSpec(compositeSpecPath, consoleLogLevel, logFilepath) {
+  log.consoleLogLevel = consoleLogLevel || log.consoleLevel;
+  log.filepath = logFilepath || log.filepath;
+  return exports.getDocumentsFromCompositeSwagger(compositeSpecPath).then(function (docs) {
+    let promiseFactories = docs.map(function (doc) {
+      return function () { return exports.validateExamples(doc, consoleLogLevel, logFilepath); }
     });
     return utils.executePromisesSequentially(promiseFactories);
   }).catch(function (err) {
     log.error(err);
+    return Promise.reject(err);
   });
 };
 
 exports.updateEndResultOfSingleValidation = function updateEndResultOfSingleValidation(validator) {
   if (validator.specValidationResult.validityStatus) {
-    let consoleLevel = log.consoleLogLevel;
-    log.consoleLogLevel = 'info';
-    log.info('No Errors were found.');
-    log.consoleLogLevel = consoleLevel;
+    if (!(log.consoleLogLevel === 'json' || log.consoleLogLevel === 'off')) {
+      let consoleLevel = log.consoleLogLevel;
+      log.consoleLogLevel = 'info';
+      log.info('No Errors were found.');
+      log.consoleLogLevel = consoleLevel;
+    }
   }
   if (!validator.specValidationResult.validityStatus) {
     exports.finalValidationResult.validityStatus = validator.specValidationResult.validityStatus;
@@ -107,19 +122,13 @@ exports.updateEndResultOfSingleValidation = function updateEndResultOfSingleVali
   return;
 };
 
-exports.logDetailedInfo = function logDetailedInfo(validator, json) {
-  if (json) {
-    let consoleLevel = log.consoleLogLevel;
-    log.consoleLogLevel = 'info';
-    log.info('############################');
-    log.info(validator.specValidationResult);
-    log.info('----------------------------');
-    log.consoleLogLevel = consoleLevel;
-  } else {
-    log.silly('############################');
-    log.silly(validator.specValidationResult);
-    log.silly('----------------------------');
+exports.logDetailedInfo = function logDetailedInfo(validator) {
+  if (log.consoleLogLevel === 'json') {
+    console.dir(validator.specValidationResult, { depth: null, colors: true });
   }
+  log.silly('############################');
+  log.silly(validator.specValidationResult);
+  log.silly('----------------------------');
 };
 
 exports = module.exports;
