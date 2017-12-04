@@ -1,0 +1,391 @@
+classDiagram
+Resource <|-- TrackedResource : allOf
+ConnectionInfo <|-- SqlConnectionInfo : allOf
+TrackedResource <|-- DataMigrationService : allOf
+Resource <|-- ProjectTask : allOf
+ProjectTaskProperties <|-- ConnectToSourceSqlServerTaskProperties : allOf
+TaskOutput <|-- ConnectToSourceSqlServerTaskOutput : allOf
+ConnectToSourceSqlServerTaskOutput <|-- ConnectToSourceSqlServerTaskOutputTaskLevel : allOf
+ConnectToSourceSqlServerTaskOutput <|-- ConnectToSourceSqlServerTaskOutputDatabaseLevel : allOf
+ProjectTaskProperties <|-- ConnectToTargetSqlDbTaskProperties : allOf
+TaskOutput <|-- ConnectToTargetSqlDbTaskOutput : allOf
+ProjectTaskProperties <|-- GetUserTablesSqlTaskProperties : allOf
+TaskOutput <|-- GetUserTablesSqlTaskOutput : allOf
+ProjectTaskProperties <|-- MigrateSqlServerSqlDbTaskProperties : allOf
+SqlMigrationTaskInput <|-- MigrateSqlServerSqlDbTaskInput : allOf
+TaskOutput <|-- MigrateSqlServerSqlDbTaskOutput : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputMigrationLevel : allOf
+DataItemMigrationSummaryResult <|-- DatabaseSummaryResult : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputDatabaseLevel : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputTableLevel : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputError : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputValidationResult : allOf
+MigrateSqlServerSqlDbTaskOutput <|-- MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResult : allOf
+TrackedResource <|-- Project : allOf
+ResourceSkusResult --> ResourceSku
+ResourceSkusResult : Array<ResourceSku> value
+ResourceSkusResult : string nextLink
+ResourceSku : string resourceType
+ResourceSku : string name
+ResourceSku : string tier
+ResourceSku : string size
+ResourceSku : string family
+ResourceSku : string kind
+ResourceSku --> ResourceSkuCapacity
+ResourceSku --> ResourceSkuCapacity
+ResourceSku : ResourceSkuCapacity capacity
+ResourceSku : Array<string> locations
+ResourceSku : Array<string> apiVersions
+ResourceSku --> ResourceSkuCosts
+ResourceSku : Array<ResourceSkuCosts> costs
+ResourceSku --> ResourceSkuCapabilities
+ResourceSku : Array<ResourceSkuCapabilities> capabilities
+ResourceSku --> ResourceSkuRestrictions
+ResourceSku : Array<ResourceSkuRestrictions> restrictions
+ResourceSkuCapacity :  minimum
+ResourceSkuCapacity :  maximum
+ResourceSkuCapacity :  default
+ResourceSkuCapacity : string scaleType
+ResourceSkuCosts : string meterID
+ResourceSkuCosts :  quantity
+ResourceSkuCosts : string extendedUnit
+ResourceSkuCapabilities : string name
+ResourceSkuCapabilities : string value
+ResourceSkuRestrictions : string type
+ResourceSkuRestrictions : Array<string> values
+ResourceSkuRestrictions : string reasonCode
+ApiError --> ODataError
+ApiError --> ODataError
+ApiError : ODataError error
+ODataError : string code
+ODataError : string message
+ODataError --> ODataError
+ODataError : Array<ODataError> details
+TrackedResource : Dictionary<string> tags
+TrackedResource : string location
+Resource : string id
+Resource : string name
+Resource : string type
+SqlConnectionInfo : string dataSource
+SqlConnectionInfo --> AuthenticationType
+SqlConnectionInfo --> AuthenticationType
+SqlConnectionInfo : AuthenticationType authentication
+SqlConnectionInfo : boolean encryptConnection
+SqlConnectionInfo : string additionalSettings
+SqlConnectionInfo : boolean trustServerCertificate
+ConnectionInfo : string type discriminator
+ConnectionInfo : string userName discriminator
+ConnectionInfo : string password discriminator
+DataMigrationService : string etag
+DataMigrationService : string kind
+DataMigrationService --> DataMigrationServiceProperties
+DataMigrationService --> DataMigrationServiceProperties
+DataMigrationService : DataMigrationServiceProperties properties
+DataMigrationService --> ServiceSku
+DataMigrationService --> ServiceSku
+DataMigrationService : ServiceSku sku
+DataMigrationServiceProperties : string provisioningState
+DataMigrationServiceProperties : string publicKey
+DataMigrationServiceProperties : string virtualSubnetId
+ServiceSku : string name
+ServiceSku : string tier
+ServiceSku : string family
+ServiceSku : string size
+ServiceSku :  capacity
+DataMigrationServiceStatusResponse : string agentVersion
+DataMigrationServiceStatusResponse : string status
+DataMigrationServiceStatusResponse : string vmSize
+DataMigrationServiceStatusResponse : Array<string> supportedTaskTypes
+ServiceSkuList --> AvailableServiceSku
+ServiceSkuList : Array<AvailableServiceSku> value
+ServiceSkuList : string nextLink
+AvailableServiceSku : string resourceType
+AvailableServiceSku : Object sku
+AvailableServiceSku : Object capacity
+TaskList --> ProjectTask
+TaskList : Array<ProjectTask> value
+TaskList : string nextLink
+ProjectTask : string etag
+ProjectTask --> ProjectTaskProperties
+ProjectTask --> ProjectTaskProperties
+ProjectTask : ProjectTaskProperties properties
+ProjectTaskProperties : string taskType discriminator
+ProjectTaskProperties --> ODataError
+ProjectTaskProperties : Array<ODataError> errors discriminator
+ProjectTaskProperties : string state discriminator
+ConnectToSourceSqlServerTaskProperties --> ConnectToSourceSqlServerTaskInput
+ConnectToSourceSqlServerTaskProperties --> ConnectToSourceSqlServerTaskInput
+ConnectToSourceSqlServerTaskProperties : ConnectToSourceSqlServerTaskInput input
+ConnectToSourceSqlServerTaskProperties --> ConnectToSourceSqlServerTaskOutput
+ConnectToSourceSqlServerTaskProperties : Array<ConnectToSourceSqlServerTaskOutput> output
+ConnectToSourceSqlServerTaskInput --> SqlConnectionInfo
+ConnectToSourceSqlServerTaskInput --> SqlConnectionInfo
+ConnectToSourceSqlServerTaskInput : SqlConnectionInfo sourceConnectionInfo
+ConnectToSourceSqlServerTaskInput --> ServerLevelPermissionsGroup
+ConnectToSourceSqlServerTaskInput --> ServerLevelPermissionsGroup
+ConnectToSourceSqlServerTaskInput : ServerLevelPermissionsGroup checkPermissionsGroup
+ConnectToSourceSqlServerTaskOutput : string resultType discriminator
+TaskOutput : string id
+ConnectToSourceSqlServerTaskOutputTaskLevel : string databases
+ConnectToSourceSqlServerTaskOutputTaskLevel : string sourceServerVersion
+ConnectToSourceSqlServerTaskOutputTaskLevel : string sourceServerBrandVersion
+ConnectToSourceSqlServerTaskOutputTaskLevel --> ReportableException
+ConnectToSourceSqlServerTaskOutputTaskLevel : Array<ReportableException> validationErrors
+ReportableException : string message
+ReportableException : string filePath
+ReportableException : string lineNumber
+ReportableException :  hResult
+ReportableException : string stackTrace
+ConnectToSourceSqlServerTaskOutputDatabaseLevel : string name
+ConnectToSourceSqlServerTaskOutputDatabaseLevel : number sizeMB
+ConnectToSourceSqlServerTaskOutputDatabaseLevel --> DatabaseFileInfo
+ConnectToSourceSqlServerTaskOutputDatabaseLevel : Array<DatabaseFileInfo> databaseFiles
+ConnectToSourceSqlServerTaskOutputDatabaseLevel --> DatabaseCompatLevel
+ConnectToSourceSqlServerTaskOutputDatabaseLevel --> DatabaseCompatLevel
+ConnectToSourceSqlServerTaskOutputDatabaseLevel : DatabaseCompatLevel compatibilityLevel
+ConnectToSourceSqlServerTaskOutputDatabaseLevel --> DatabaseState
+ConnectToSourceSqlServerTaskOutputDatabaseLevel --> DatabaseState
+ConnectToSourceSqlServerTaskOutputDatabaseLevel : DatabaseState databaseState
+DatabaseFileInfo : string databaseName
+DatabaseFileInfo : string id
+DatabaseFileInfo : string logicalName
+DatabaseFileInfo : string physicalFullName
+DatabaseFileInfo : string restoreFullName
+DatabaseFileInfo --> DatabaseFileType
+DatabaseFileInfo --> DatabaseFileType
+DatabaseFileInfo : DatabaseFileType fileType
+DatabaseFileInfo : number sizeMB
+ConnectToTargetSqlDbTaskProperties --> ConnectToTargetSqlDbTaskInput
+ConnectToTargetSqlDbTaskProperties --> ConnectToTargetSqlDbTaskInput
+ConnectToTargetSqlDbTaskProperties : ConnectToTargetSqlDbTaskInput input
+ConnectToTargetSqlDbTaskProperties --> ConnectToTargetSqlDbTaskOutput
+ConnectToTargetSqlDbTaskProperties : Array<ConnectToTargetSqlDbTaskOutput> output
+ConnectToTargetSqlDbTaskInput --> SqlConnectionInfo
+ConnectToTargetSqlDbTaskInput --> SqlConnectionInfo
+ConnectToTargetSqlDbTaskInput : SqlConnectionInfo targetConnectionInfo
+ConnectToTargetSqlDbTaskOutput : string databases
+ConnectToTargetSqlDbTaskOutput : string targetServerVersion
+ConnectToTargetSqlDbTaskOutput : string targetServerBrandVersion
+GetUserTablesSqlTaskProperties --> GetUserTablesSqlTaskInput
+GetUserTablesSqlTaskProperties --> GetUserTablesSqlTaskInput
+GetUserTablesSqlTaskProperties : GetUserTablesSqlTaskInput input
+GetUserTablesSqlTaskProperties --> GetUserTablesSqlTaskOutput
+GetUserTablesSqlTaskProperties : Array<GetUserTablesSqlTaskOutput> output
+GetUserTablesSqlTaskInput --> SqlConnectionInfo
+GetUserTablesSqlTaskInput --> SqlConnectionInfo
+GetUserTablesSqlTaskInput : SqlConnectionInfo connectionInfo
+GetUserTablesSqlTaskInput : Array<string> selectedDatabases
+GetUserTablesSqlTaskOutput : string databasesToTables
+GetUserTablesSqlTaskOutput --> ReportableException
+GetUserTablesSqlTaskOutput : Array<ReportableException> validationErrors
+DatabaseTable : boolean hasRows
+DatabaseTable : string name
+MigrateSqlServerSqlDbTaskProperties --> MigrateSqlServerSqlDbTaskInput
+MigrateSqlServerSqlDbTaskProperties --> MigrateSqlServerSqlDbTaskInput
+MigrateSqlServerSqlDbTaskProperties : MigrateSqlServerSqlDbTaskInput input
+MigrateSqlServerSqlDbTaskProperties --> MigrateSqlServerSqlDbTaskOutput
+MigrateSqlServerSqlDbTaskProperties : Array<MigrateSqlServerSqlDbTaskOutput> output
+MigrateSqlServerSqlDbTaskInput --> MigrateSqlServerSqlDbDatabaseInput
+MigrateSqlServerSqlDbTaskInput : Array<MigrateSqlServerSqlDbDatabaseInput> selectedDatabases
+MigrateSqlServerSqlDbTaskInput --> MigrationValidationOptions
+MigrateSqlServerSqlDbTaskInput --> MigrationValidationOptions
+MigrateSqlServerSqlDbTaskInput : MigrationValidationOptions validationOptions
+MigrateSqlServerSqlDbDatabaseInput : string name
+MigrateSqlServerSqlDbDatabaseInput : string targetDatabaseName
+MigrateSqlServerSqlDbDatabaseInput : boolean makeSourceDbReadOnly
+MigrateSqlServerSqlDbDatabaseInput : Dictionary<string> tableMap
+MigrateSqlServerSqlDbTaskOutput : string resultType discriminator
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string startedOn
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string endedOn
+MigrateSqlServerSqlDbTaskOutputMigrationLevel :  durationInSeconds
+MigrateSqlServerSqlDbTaskOutputMigrationLevel --> MigrationStatus
+MigrateSqlServerSqlDbTaskOutputMigrationLevel --> MigrationStatus
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : MigrationStatus status
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string statusMessage
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string message
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string databases
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string databaseSummary
+MigrateSqlServerSqlDbTaskOutputMigrationLevel --> MigrationReportResult
+MigrateSqlServerSqlDbTaskOutputMigrationLevel --> MigrationReportResult
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : MigrationReportResult migrationReportResult
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string sourceServerVersion
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string sourceServerBrandVersion
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string targetServerVersion
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : string targetServerBrandVersion
+MigrateSqlServerSqlDbTaskOutputMigrationLevel --> ReportableException
+MigrateSqlServerSqlDbTaskOutputMigrationLevel : Array<ReportableException> exceptionsAndWarnings
+DatabaseSummaryResult : number sizeMB
+DataItemMigrationSummaryResult : string name
+DataItemMigrationSummaryResult : string startedOn
+DataItemMigrationSummaryResult : string endedOn
+DataItemMigrationSummaryResult --> MigrationState
+DataItemMigrationSummaryResult --> MigrationState
+DataItemMigrationSummaryResult : MigrationState state
+DataItemMigrationSummaryResult : string statusMessage
+DataItemMigrationSummaryResult :  itemsCount
+DataItemMigrationSummaryResult :  itemsCompletedCount
+DataItemMigrationSummaryResult : string errorPrefix
+DataItemMigrationSummaryResult : string resultPrefix
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string databaseName
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string startedOn
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string endedOn
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel --> MigrationState
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel --> MigrationState
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : MigrationState state
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel --> DatabaseMigrationStage
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel --> DatabaseMigrationStage
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : DatabaseMigrationStage stage
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string statusMessage
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string message
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel :  numberOfObjects
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel :  numberOfObjectsCompleted
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel :  errorCount
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string errorPrefix
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string resultPrefix
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel --> ReportableException
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : Array<ReportableException> exceptionsAndWarnings
+MigrateSqlServerSqlDbTaskOutputDatabaseLevel : string objectSummary
+MigrateSqlServerSqlDbTaskOutputTableLevel : string objectName
+MigrateSqlServerSqlDbTaskOutputTableLevel : string startedOn
+MigrateSqlServerSqlDbTaskOutputTableLevel : string endedOn
+MigrateSqlServerSqlDbTaskOutputTableLevel --> MigrationState
+MigrateSqlServerSqlDbTaskOutputTableLevel --> MigrationState
+MigrateSqlServerSqlDbTaskOutputTableLevel : MigrationState state
+MigrateSqlServerSqlDbTaskOutputTableLevel : string statusMessage
+MigrateSqlServerSqlDbTaskOutputTableLevel :  itemsCount
+MigrateSqlServerSqlDbTaskOutputTableLevel :  itemsCompletedCount
+MigrateSqlServerSqlDbTaskOutputTableLevel : string errorPrefix
+MigrateSqlServerSqlDbTaskOutputTableLevel : string resultPrefix
+MigrateSqlServerSqlDbTaskOutputError : string id
+MigrateSqlServerSqlDbTaskOutputError --> ReportableException
+MigrateSqlServerSqlDbTaskOutputError --> ReportableException
+MigrateSqlServerSqlDbTaskOutputError : ReportableException error
+MigrationValidationResult : string id
+MigrationValidationResult : string migrationId
+MigrationValidationResult --> MigrationValidationDatabaseSummaryResult
+MigrationValidationResult : Dictionary<MigrationValidationDatabaseSummaryResult> summaryResults
+MigrationValidationResult --> ValidationStatus
+MigrationValidationResult --> ValidationStatus
+MigrationValidationResult : ValidationStatus status
+MigrationValidationDatabaseSummaryResult : string id
+MigrationValidationDatabaseSummaryResult : string migrationId
+MigrationValidationDatabaseSummaryResult : string sourceDatabaseName
+MigrationValidationDatabaseSummaryResult : string targetDatabaseName
+MigrationValidationDatabaseSummaryResult : string startedOn
+MigrationValidationDatabaseSummaryResult : string endedOn
+MigrationValidationDatabaseSummaryResult --> ValidationStatus
+MigrationValidationDatabaseSummaryResult --> ValidationStatus
+MigrationValidationDatabaseSummaryResult : ValidationStatus status
+MigrationValidationDatabaseLevelResult : string id
+MigrationValidationDatabaseLevelResult : string migrationId
+MigrationValidationDatabaseLevelResult : string sourceDatabaseName
+MigrationValidationDatabaseLevelResult : string targetDatabaseName
+MigrationValidationDatabaseLevelResult : string startedOn
+MigrationValidationDatabaseLevelResult : string endedOn
+MigrationValidationDatabaseLevelResult --> DataIntegrityValidationResult
+MigrationValidationDatabaseLevelResult --> DataIntegrityValidationResult
+MigrationValidationDatabaseLevelResult : DataIntegrityValidationResult dataIntegrityValidationResult
+MigrationValidationDatabaseLevelResult --> SchemaComparisonValidationResult
+MigrationValidationDatabaseLevelResult --> SchemaComparisonValidationResult
+MigrationValidationDatabaseLevelResult : SchemaComparisonValidationResult schemaValidationResult
+MigrationValidationDatabaseLevelResult --> QueryAnalysisValidationResult
+MigrationValidationDatabaseLevelResult --> QueryAnalysisValidationResult
+MigrationValidationDatabaseLevelResult : QueryAnalysisValidationResult queryAnalysisValidationResult
+MigrationValidationDatabaseLevelResult --> ValidationStatus
+MigrationValidationDatabaseLevelResult --> ValidationStatus
+MigrationValidationDatabaseLevelResult : ValidationStatus status
+DataIntegrityValidationResult : Dictionary<string> failedObjects
+DataIntegrityValidationResult --> ValidationError
+DataIntegrityValidationResult : Array<> validationErrors
+ValidationError : string text
+ValidationError --> Severity
+ValidationError : string severity
+SchemaComparisonValidationResult --> SchemaComparisonValidationResultType
+SchemaComparisonValidationResult : Array<> schemaDifferences
+SchemaComparisonValidationResult --> ValidationError
+SchemaComparisonValidationResult : Array<> validationErrors
+SchemaComparisonValidationResult : Dictionary<> sourceDatabaseObjectCount
+SchemaComparisonValidationResult : Dictionary<> targetDatabaseObjectCount
+SchemaComparisonValidationResultType : string objectName
+SchemaComparisonValidationResultType --> DatabaseObjectType
+SchemaComparisonValidationResultType --> DatabaseObjectType
+SchemaComparisonValidationResultType : DatabaseObjectType objectType
+SchemaComparisonValidationResultType --> UpdateActionType
+SchemaComparisonValidationResultType : string updateAction
+QueryAnalysisValidationResult --> QueryExecutionResult
+QueryAnalysisValidationResult : Array<> queryResults
+QueryAnalysisValidationResult --> ValidationError
+QueryAnalysisValidationResult : Array<> validationErrors
+QueryExecutionResult : string queryText
+QueryExecutionResult :  statementsInBatch
+QueryExecutionResult --> ExecutionStatistics
+QueryExecutionResult --> ExecutionStatistics
+QueryExecutionResult : ExecutionStatistics sourceResult
+QueryExecutionResult --> ExecutionStatistics
+QueryExecutionResult --> ExecutionStatistics
+QueryExecutionResult : ExecutionStatistics targetResult
+ExecutionStatistics :  executionCount
+ExecutionStatistics : number cpuTimeMs
+ExecutionStatistics : number elapsedTimeMs
+ExecutionStatistics --> WaitStatistics
+ExecutionStatistics : Dictionary<WaitStatistics> waitStats
+ExecutionStatistics : boolean hasErrors
+ExecutionStatistics : Array<string> sqlErrors
+WaitStatistics : string waitType
+WaitStatistics : number waitTimeMs
+WaitStatistics :  waitCount
+MigrationReportResult : string id
+MigrationReportResult : string reportUrl
+MigrationValidationOptions : boolean enableSchemaValidation
+MigrationValidationOptions : boolean enableDataIntegrityValidation
+MigrationValidationOptions : boolean enableQueryAnalysisValidation
+SqlMigrationTaskInput --> SqlConnectionInfo
+SqlMigrationTaskInput --> SqlConnectionInfo
+SqlMigrationTaskInput : SqlConnectionInfo sourceConnectionInfo
+SqlMigrationTaskInput --> SqlConnectionInfo
+SqlMigrationTaskInput --> SqlConnectionInfo
+SqlMigrationTaskInput : SqlConnectionInfo targetConnectionInfo
+NameAvailabilityResponse : boolean nameAvailable
+NameAvailabilityResponse : string reason
+NameAvailabilityResponse : string message
+DataMigrationServiceList --> DataMigrationService
+DataMigrationServiceList : Array<DataMigrationService> value
+DataMigrationServiceList : string nextLink
+ProjectList --> Project
+ProjectList : Array<Project> value
+ProjectList : string nextLink
+Project --> ProjectProperties
+Project --> ProjectProperties
+Project : ProjectProperties properties
+ProjectProperties --> ProjectSourcePlatform
+ProjectProperties --> ProjectSourcePlatform
+ProjectProperties : ProjectSourcePlatform sourcePlatform
+ProjectProperties --> ProjectTargetPlatform
+ProjectProperties --> ProjectTargetPlatform
+ProjectProperties : ProjectTargetPlatform targetPlatform
+ProjectProperties : string creationTime
+ProjectProperties --> ConnectionInfo
+ProjectProperties --> ConnectionInfo
+ProjectProperties : ConnectionInfo sourceConnectionInfo
+ProjectProperties --> ConnectionInfo
+ProjectProperties --> ConnectionInfo
+ProjectProperties : ConnectionInfo targetConnectionInfo
+ProjectProperties --> DatabaseInfo
+ProjectProperties : Array<DatabaseInfo> databasesInfo
+ProjectProperties : string provisioningState
+DatabaseInfo : string sourceDatabaseName
+QuotaList --> Quota
+QuotaList : Array<Quota> value
+QuotaList : string nextLink
+Quota : number currentValue
+Quota : string id
+Quota : number limit
+Quota : Object name
+Quota : string unit
+ServiceOperationList --> ServiceOperation
+ServiceOperationList : Array<ServiceOperation> value
+ServiceOperationList : string nextLink
+ServiceOperation : string name
+ServiceOperation : Object display
+NameAvailabilityRequest : string name
+NameAvailabilityRequest : string type

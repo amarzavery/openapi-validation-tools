@@ -19,14 +19,26 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "create uml",
+      "program": "${workspaceRoot}/cli.js",
+      "cwd": "${workspaceRoot}",
+      "args": [
+        "create-uml",
+        "D:/sdk/azure-rest-api-specs-pr/specification/datamigration/resource-manager/Microsoft.DataMigration/2017-11-15-preview/datamigration.json"
+      ],
+      "env": {}
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Validate example",
       "program": "${workspaceRoot}/cli.js",
       "cwd": "${workspaceRoot}",
       "args": [
         "validate-example",
-        "test/swaggers/arm-storage/2016-01-01/swagger/storage.json",
+        "D:/sdk/upstream/azure-rest-api-specs/specification/operationalinsights/data-plane/Microsoft.OperationalInsights/v1/OperationalInsights.json",
         "-o",
-        "StorageAccounts_CheckNameAvailability"
+        "Query_Get"
       ],
       "env": {}
     },

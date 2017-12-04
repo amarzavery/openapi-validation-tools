@@ -1,0 +1,49 @@
+classDiagram
+Response <|-- SearchResponse : allOf
+Identifiable <|-- Response : allOf
+SearchResultsAnswer <|-- Entities : allOf
+SearchResultsAnswer <|-- Places : allOf
+Answer <|-- SearchResultsAnswer : allOf
+ResponseBase <|-- Identifiable : allOf
+Response <|-- Answer : allOf
+Response <|-- ErrorResponse : allOf
+Response <|-- Thing : allOf
+MediaObject <|-- ImageObject : allOf
+Thing <|-- Place : allOf
+Thing <|-- Organization : allOf
+Thing <|-- CreativeWork : allOf
+Thing <|-- Intangible : allOf
+ContractualRulesContractualRule <|-- ContractualRulesAttribution : allOf
+CreativeWork <|-- MediaObject : allOf
+StructuredValue <|-- PostalAddress : allOf
+CreativeWork <|-- License : allOf
+Intangible <|-- StructuredValue : allOf
+ContractualRulesAttribution <|-- ContractualRulesLicenseAttribution : allOf
+ContractualRulesAttribution <|-- ContractualRulesLinkAttribution : allOf
+ContractualRulesAttribution <|-- ContractualRulesMediaAttribution : allOf
+ContractualRulesAttribution <|-- ContractualRulesTextAttribution : allOf
+SearchResponse --> QueryContext
+SearchResponse : QueryContext queryContext
+SearchResponse --> Entities
+SearchResponse : Entities entities
+SearchResponse --> Places
+SearchResponse : Places places
+Response : Array<ContractualRulesContractualRule> contractualRules
+Response : string webSearchUrl
+QueryContext : string originalQuery
+QueryContext : string alteredQuery
+QueryContext : string alterationOverrideQuery
+QueryContext : boolean adultIntent
+QueryContext : boolean askUserForLocation
+Entities : string queryScenario
+Entities : Array<Thing> value
+Places : Array<Thing> value
+SearchResultsAnswer --> QueryContext
+Thing --> ImageObject
+Thing --> EntitiesEntityPresentationInfo
+ContractualRulesContractualRule : string targetPropertyName discriminator
+ContractualRulesContractualRule : string _type discriminator
+ImageObject --> ImageObject
+Place --> PostalAddress
+ResponseBase : string _type discriminator
+ContractualRulesLicenseAttribution --> License

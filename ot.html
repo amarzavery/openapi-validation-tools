@@ -1,0 +1,408 @@
+<svg id="mermaidChart0" width="1176" xmlns="http://www.w3.org/2000/svg" height="906.1643835616438" viewBox="0 0 2852.65234375 745" style="width: 1168; height: 906.1643835616438;"><style>
+  /* Flowchart variables */
+/* Sequence Diagram variables */
+/* Gantt chart variables */
+.mermaid .label {
+  color: #333;
+}
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #ECECFF;
+  stroke: #CCCCFF;
+  stroke-width: 1px;
+}
+.arrowheadPath {
+  fill: #333333;
+}
+.edgePath .path {
+  stroke: #333333;
+}
+.edgeLabel {
+  background-color: #e8e8e8;
+}
+.cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important;
+}
+.cluster text {
+  fill: #333;
+}
+.actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+text.actor {
+  fill: black;
+  stroke: none;
+}
+.actor-line {
+  stroke: grey;
+}
+.messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #333;
+}
+.messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: #333;
+}
+#arrowhead {
+  fill: #333;
+}
+#crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.messageText {
+  fill: #333;
+  stroke: none;
+}
+.labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+.labelText {
+  fill: black;
+  stroke: none;
+}
+.loopText {
+  fill: black;
+  stroke: none;
+}
+.loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(#arrowhead)";
+  stroke: #CCCCFF;
+}
+.note {
+  stroke: #aaaa33;
+  fill: #fff5ad;
+}
+.noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.section {
+  stroke: none;
+  opacity: 0.2;
+}
+.section0 {
+  fill: rgba(102, 102, 255, 0.49);
+}
+.section2 {
+  fill: #fff400;
+}
+.section1,
+.section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.sectionTitle0 {
+  fill: #333;
+}
+.sectionTitle1 {
+  fill: #333;
+}
+.sectionTitle2 {
+  fill: #333;
+}
+.sectionTitle3 {
+  fill: #333;
+}
+.sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.task {
+  stroke-width: 2;
+}
+.taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px;
+}
+.taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.taskText0,
+.taskText1,
+.taskText2,
+.taskText3 {
+  fill: white;
+}
+.task0,
+.task1,
+.task2,
+.task3 {
+  fill: #8a90dd;
+  stroke: #534fbc;
+}
+.taskTextOutside0,
+.taskTextOutside2 {
+  fill: black;
+}
+.taskTextOutside1,
+.taskTextOutside3 {
+  fill: black;
+}
+/* Active task */
+.active0,
+.active1,
+.active2,
+.active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc;
+}
+.activeText0,
+.activeText1,
+.activeText2,
+.activeText3 {
+  fill: black !important;
+}
+/* Completed task */
+.done0,
+.done1,
+.done2,
+.done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2;
+}
+.doneText0,
+.doneText1,
+.doneText2,
+.doneText3 {
+  fill: black !important;
+}
+/* Tasks on the critical line */
+.crit0,
+.crit1,
+.crit2,
+.crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2;
+}
+.activeCrit0,
+.activeCrit1,
+.activeCrit2,
+.activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2;
+}
+.doneCrit0,
+.doneCrit1,
+.doneCrit2,
+.doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.doneCritText0,
+.doneCritText1,
+.doneCritText2,
+.doneCritText3 {
+  fill: black !important;
+}
+.activeCritText0,
+.activeCritText1,
+.activeCritText2,
+.activeCritText3 {
+  fill: black !important;
+}
+.titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black;
+}
+g.classGroup text {
+  fill: #9370DB;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 10px;
+}
+g.classGroup rect {
+  fill: #ECECFF;
+  stroke: #9370DB;
+}
+g.classGroup line {
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+svg .classLabel .box {
+  stroke: none;
+  stroke-width: 0;
+  fill: #ECECFF;
+  opacity: 0.5;
+}
+svg .classLabel .label {
+  fill: #9370DB;
+  font-size: 10px;
+}
+.relation {
+  stroke: #9370DB;
+  stroke-width: 1;
+  fill: none;
+}
+.composition {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.aggregation {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationStart {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationEnd {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+svg {
+  color: rgb(0, 0, 0);
+  font: normal normal 400 normal 16px / normal Arial;
+}
+  </style><g/><defs><marker id="extensionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"/></marker></defs><defs><marker id="extensionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"/></marker></defs><defs><marker id="compositionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"/></marker></defs><defs><marker id="compositionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"/></marker></defs><defs><marker id="aggregationStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"/></marker></defs><defs><marker id="aggregationEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"/></marker></defs><defs><marker id="dependencyStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"/></marker></defs><defs><marker id="dependencyEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"/></marker></defs><g id="classId0" class="classGroup" transform="translate(313.94921875,199 )"><rect x="0" y="0" width="432.984375" height="68"/><text x="5" y="15">Response</text><line x1="0" y1="27" y2="27" x2="432.984375"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">Array&lt;ContractualRulesContractualRule&gt; contractualRules</tspan><tspan x="5" dy="10">string webSearchUrl</tspan></text><line x1="0" y1="59" y2="59" x2="432.984375"/><text x="5" y="74" fill="white" class="classText"/></g><g id="classId1" class="classGroup" transform="translate(104.87890625,408 )"><rect x="0" y="0" width="213.875" height="78"/><text x="5" y="15">SearchResponse</text><line x1="0" y1="27" y2="27" x2="213.875"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">QueryContext queryContext</tspan><tspan x="5" dy="10">Entities entities</tspan><tspan x="5" dy="10">Places places</tspan></text><line x1="0" y1="69" y2="69" x2="213.875"/><text x="5" y="84" fill="white" class="classText"/></g><g id="classId2" class="classGroup" transform="translate(484.19921875,108 )"><rect x="0" y="0" width="92.484375" height="41"/><text x="5" y="15">Identifiable</text><line x1="0" y1="27" y2="27" x2="92.484375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="92.484375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId3" class="classGroup" transform="translate(368.75390625,426.5 )"><rect x="0" y="0" width="173.0625" height="41"/><text x="5" y="15">SearchResultsAnswer</text><line x1="0" y1="27" y2="27" x2="173.0625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="173.0625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId4" class="classGroup" transform="translate(0,551 )"><rect x="0" y="0" width="161.84375" height="68"/><text x="5" y="15">Entities</text><line x1="0" y1="27" y2="27" x2="161.84375"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">string queryScenario</tspan><tspan x="5" dy="10">Array&lt;Thing&gt; value</tspan></text><line x1="0" y1="59" y2="59" x2="161.84375"/><text x="5" y="74" fill="white" class="classText"/></g><g id="classId5" class="classGroup" transform="translate(491.15625,556 )"><rect x="0" y="0" width="154.734375" height="58"/><text x="5" y="15">Places</text><line x1="0" y1="27" y2="27" x2="154.734375"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">Array&lt;Thing&gt; value</tspan></text><line x1="0" y1="49" y2="49" x2="154.734375"/><text x="5" y="64" fill="white" class="classText"/></g><g id="classId6" class="classGroup" transform="translate(420.77734375,317 )"><rect x="0" y="0" width="69.015625" height="41"/><text x="5" y="15">Answer</text><line x1="0" y1="27" y2="27" x2="69.015625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="69.015625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId7" class="classGroup" transform="translate(433.68359375,0 )"><rect x="0" y="0" width="193.515625" height="58"/><text x="5" y="15">ResponseBase</text><line x1="0" y1="27" y2="27" x2="193.515625"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">string _type discriminator</tspan></text><line x1="0" y1="49" y2="49" x2="193.515625"/><text x="5" y="64" fill="white" class="classText"/></g><g id="classId8" class="classGroup" transform="translate(605.91015625,317 )"><rect x="0" y="0" width="122.703125" height="41"/><text x="5" y="15">ErrorResponse</text><line x1="0" y1="27" y2="27" x2="122.703125"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="122.703125"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId9" class="classGroup" transform="translate(1030.84765625,317 )"><rect x="0" y="0" width="55.015625" height="41"/><text x="5" y="15">Thing</text><line x1="0" y1="27" y2="27" x2="55.015625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="55.015625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId10" class="classGroup" transform="translate(873.5078125,564.5 )"><rect x="0" y="0" width="105.375" height="41"/><text x="5" y="15">MediaObject</text><line x1="0" y1="27" y2="27" x2="105.375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="105.375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId11" class="classGroup" transform="translate(1130.65234375,684 )"><rect x="0" y="0" width="106.265625" height="41"/><text x="5" y="15">ImageObject</text><line x1="0" y1="27" y2="27" x2="106.265625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="106.265625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId12" class="classGroup" transform="translate(699.19140625,564.5 )"><rect x="0" y="0" width="55.125" height="41"/><text x="5" y="15">Place</text><line x1="0" y1="27" y2="27" x2="55.125"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="55.125"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId13" class="classGroup" transform="translate(761.75390625,426.5 )"><rect x="0" y="0" width="105.71875" height="41"/><text x="5" y="15">Organization</text><line x1="0" y1="27" y2="27" x2="105.71875"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="105.71875"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId14" class="classGroup" transform="translate(944.171875,426.5 )"><rect x="0" y="0" width="111.609375" height="41"/><text x="5" y="15">CreativeWork</text><line x1="0" y1="27" y2="27" x2="111.609375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="111.609375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId15" class="classGroup" transform="translate(1184.33984375,426.5 )"><rect x="0" y="0" width="84.484375" height="41"/><text x="5" y="15">Intangible</text><line x1="0" y1="27" y2="27" x2="84.484375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="84.484375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId16" class="classGroup" transform="translate(2117.453125,199 )"><rect x="0" y="0" width="298.4375" height="68"/><text x="5" y="15">ContractualRulesContractualRule</text><line x1="0" y1="27" y2="27" x2="298.4375"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">string targetPropertyName discriminator</tspan><tspan x="5" dy="10">string _type discriminator</tspan></text><line x1="0" y1="59" y2="59" x2="298.4375"/><text x="5" y="74" fill="white" class="classText"/></g><g id="classId17" class="classGroup" transform="translate(2161.7890625,317 )"><rect x="0" y="0" width="209.765625" height="41"/><text x="5" y="15">ContractualRulesAttribution</text><line x1="0" y1="27" y2="27" x2="209.765625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="209.765625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId18" class="classGroup" transform="translate(1075.96484375,564.5 )"><rect x="0" y="0" width="128.640625" height="41"/><text x="5" y="15">StructuredValue</text><line x1="0" y1="27" y2="27" x2="128.640625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="128.640625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId19" class="classGroup" transform="translate(814.078125,684 )"><rect x="0" y="0" width="118.15625" height="41"/><text x="5" y="15">PostalAddress</text><line x1="0" y1="27" y2="27" x2="118.15625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="118.15625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId20" class="classGroup" transform="translate(1254.60546875,564.5 )"><rect x="0" y="0" width="70.25" height="41"/><text x="5" y="15">License</text><line x1="0" y1="27" y2="27" x2="70.25"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="70.25"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId21" class="classGroup" transform="translate(1686.18359375,426.5 )"><rect x="0" y="0" width="264.90625" height="41"/><text x="5" y="15">ContractualRulesLicenseAttribution</text><line x1="0" y1="27" y2="27" x2="264.90625"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="264.90625"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId22" class="classGroup" transform="translate(2001.08984375,426.5 )"><rect x="0" y="0" width="239.109375" height="41"/><text x="5" y="15">ContractualRulesLinkAttribution</text><line x1="0" y1="27" y2="27" x2="239.109375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="239.109375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId23" class="classGroup" transform="translate(2290.19921875,426.5 )"><rect x="0" y="0" width="253.34375" height="41"/><text x="5" y="15">ContractualRulesMediaAttribution</text><line x1="0" y1="27" y2="27" x2="253.34375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="253.34375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId24" class="classGroup" transform="translate(2593.54296875,426.5 )"><rect x="0" y="0" width="239.109375" height="41"/><text x="5" y="15">ContractualRulesTextAttribution</text><line x1="0" y1="27" y2="27" x2="239.109375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="239.109375"/><text x="5" y="47" fill="white" class="classText"/></g><g id="classId25" class="classGroup" transform="translate(211.84375,536 )"><rect x="0" y="0" width="229.3125" height="98"/><text x="5" y="15">QueryContext</text><line x1="0" y1="27" y2="27" x2="229.3125"/><text x="5" y="37" fill="white" class="classText"><tspan x="5">string originalQuery</tspan><tspan x="5" dy="10">string alteredQuery</tspan><tspan x="5" dy="10">string alterationOverrideQuery</tspan><tspan x="5" dy="10">boolean adultIntent</tspan><tspan x="5" dy="10">boolean askUserForLocation</tspan></text><line x1="0" y1="89" y2="89" x2="229.3125"/><text x="5" y="104" fill="white" class="classText"/></g><g id="classId26" class="classGroup" transform="translate(1412.07421875,426.5 )"><rect x="0" y="0" width="224.109375" height="41"/><text x="5" y="15">EntitiesEntityPresentationInfo</text><line x1="0" y1="27" y2="27" x2="224.109375"/><text x="5" y="37" fill="white" class="classText"/><line x1="0" y1="32" y2="32" x2="224.109375"/><text x="5" y="47" fill="white" class="classText"/></g><path d="M346.826999470339,267L324.32523393361583,271.1666666666667C301.8234683968926,275.3333333333333,256.8199373234463,283.66666666666663,234.31817178672316,295.41666666666663C211.81640625,307.16666666666663,211.81640625,322.3333333333333,211.81640625,337.5C211.81640625,352.66666666666663,211.81640625,367.8333333333333,211.81640625,379.5833333333333C211.81640625,391.3333333333333,211.81640625,399.66666666666663,211.81640625,403.8333333333333L211.81640625,408" id="edge0" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="192.859375" y="343.75" width="39.453125" height="22"/><text class="label" x="211.81640625" y="360.25" fill="red" text-anchor="middle">allOf</text></g><path d="M530.44140625,149L530.4414062499999,153.16666666666666C530.44140625,157.33333333333331,530.44140625,165.66666666666666,530.4414062499999,174C530.44140625,182.33333333333331,530.44140625,190.66666666666666,530.4414062499999,194.83333333333331L530.44140625,199" id="edge1" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="511.484375" y="170" width="39.453125" height="22"/><text class="label" x="530.44140625" y="186.5" fill="red" text-anchor="middle">allOf</text></g><path d="M416.2921142578125,467.5L402.50189208984375,474.7499999999999C388.711669921875,481.99999999999994,361.1312255859375,496.49999999999994,318.72316487630206,512.1327305573164C276.3151041666667,527.765461114633,219.07942708333331,544.5309222292661,190.46158854166666,552.9136527865827L161.84375,561.2963833438993" id="edge2" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="228.734375" y="519.640625" width="39.453125" height="22"/><text class="label" x="247.697265625" y="536.1481916719497" fill="red" text-anchor="middle">allOf</text></g><path d="M448.6474304199219,467.5L446.2999420166015,474.7499999999999C443.95245361328125,481.99999999999994,439.2574768066406,496.49999999999994,450.48711044723916,511.2499999999999C461.7167440878378,526,488.8709881756756,541,502.4481102195946,548.4999999999999L516.0252322635135,556" id="edge3" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="456.34375" y="517" width="39.453125" height="22"/><text class="label" x="475.2938661317568" y="533.5" fill="red" text-anchor="middle">allOf</text></g><path d="M455.28515625,358L455.28515625,362.16666666666663C455.28515625,366.3333333333333,455.28515625,374.66666666666663,455.28515625,386.0833333333333C455.28515625,397.5,455.28515625,412,455.28515625,419.24999999999994L455.28515625,426.5" id="edge4" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="436.328125" y="388.25" width="39.453125" height="22"/><text class="label" x="455.28515625" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M530.44140625,58L530.4414062499999,62.16666666666666C530.44140625,66.33333333333333,530.44140625,74.66666666666666,530.4414062499999,83C530.44140625,91.33333333333333,530.44140625,99.66666666666666,530.4414062499999,103.83333333333333L530.44140625,108" id="edge5" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="511.484375" y="79" width="39.453125" height="22"/><text class="label" x="530.44140625" y="95.5" fill="red" text-anchor="middle">allOf</text></g><path d="M487.1310248940678,267L481.82338012005647,271.1666666666667C476.5157353460452,275.3333333333333,465.9004457980226,283.66666666666663,460.5928010240113,292C455.28515625,300.3333333333333,455.28515625,308.66666666666663,455.28515625,312.8333333333333L455.28515625,317" id="edge6" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="436.328125" y="288" width="39.453125" height="22"/><text class="label" x="455.28515625" y="304.5" fill="red" text-anchor="middle">allOf</text></g><path d="M609.2870100635594,267L618.9494615112994,271.1666666666667C628.6119129590395,275.3333333333333,647.9368158545198,283.66666666666663,657.5992673022599,292C667.26171875,300.3333333333333,667.26171875,308.66666666666663,667.26171875,312.8333333333333L667.26171875,317" id="edge7" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="648.3125" y="288" width="39.453125" height="22"/><text class="label" x="667.26171875" y="304.5" fill="red" text-anchor="middle">allOf</text></g><path d="M746.93359375,257.1952998978882L798.8372395833333,262.99608324824015C850.7408854166666,268.79686659859215,954.5481770833333,280.3984332992961,1006.4518229166666,290.3658833163147C1058.35546875,300.3333333333333,1058.35546875,308.66666666666663,1058.35546875,312.8333333333333L1058.35546875,317" id="edge8" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1039.40625" y="288" width="39.453125" height="22"/><text class="label" x="1058.35546875" y="304.5" fill="red" text-anchor="middle">allOf</text></g><path d="M926.1953125,605.5L926.1953124999999,614.4166666666666C926.1953125,623.3333333333333,926.1953125,641.1666666666666,960.2714843749999,656.1024597000439C994.34765625,671.0382527334212,1062.5,683.0765054668425,1096.576171875,689.0956318335532L1130.65234375,695.1147582002639" id="edge9" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1009.46875" y="660.546875" width="39.453125" height="22"/><text class="label" x="1028.423828125" y="677.0573791001319" fill="red" text-anchor="middle">allOf</text></g><path d="M1030.84765625,341.27442572741194L980.1653645833331,348.2286881061766C929.4830729166665,355.1829504849413,828.1184895833333,369.0914752424706,777.4361979166666,386.71240428790196C726.75390625,404.3333333333333,726.75390625,425.66666666666663,726.7539062499999,447C726.75390625,468.3333333333333,726.75390625,489.66666666666663,726.7539062499999,509.24999999999994C726.75390625,528.8333333333333,726.75390625,546.6666666666666,726.7539062499999,555.5833333333334L726.75390625,564.5" id="edge10" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="707.796875" y="462.5" width="39.453125" height="22"/><text class="label" x="726.75390625" y="479" fill="red" text-anchor="middle">allOf</text></g><path d="M1030.84765625,342.6349562485977L994.8085937499998,349.362463540498C958.7695312499999,356.0899708323984,886.6914062499999,369.5449854161992,850.6523437499998,383.5224927080996C814.6132812499999,397.5,814.6132812499999,412,814.6132812499998,419.24999999999994L814.61328125,426.5" id="edge11" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="795.65625" y="388.25" width="39.453125" height="22"/><text class="label" x="814.61328125" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M1032.0528846153845,358L1026.706830929487,362.16666666666663C1021.3607772435896,366.3333333333333,1010.6686698717948,374.66666666666663,1005.3226161858973,386.0833333333333C999.9765625,397.5,999.9765625,412,999.9765624999999,419.24999999999994L999.9765625,426.5" id="edge12" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="981.015625" y="388.25" width="39.453125" height="22"/><text class="label" x="999.9765625" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M1085.86328125,344.93999907119303L1109.31640625,351.2833325593275C1132.76953125,357.626666047462,1179.67578125,370.313333023731,1203.12890625,383.90666651186547C1226.58203125,397.5,1226.58203125,412,1226.58203125,419.24999999999994L1226.58203125,426.5" id="edge13" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1207.625" y="388.25" width="39.453125" height="22"/><text class="label" x="1226.58203125" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M2266.671875,267L2266.671875,271.1666666666667C2266.671875,275.3333333333333,2266.671875,283.66666666666663,2266.671875,292C2266.671875,300.3333333333333,2266.671875,308.66666666666663,2266.671875,312.8333333333333L2266.671875,317" id="edge14" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="2247.71875" y="288" width="39.453125" height="22"/><text class="label" x="2266.671875" y="304.5" fill="red" text-anchor="middle">allOf</text></g><path d="M976.343505859375,467.5L967.9854736328124,474.7499999999999C959.62744140625,481.99999999999994,942.911376953125,496.49999999999994,934.5533447265624,512.6666666666666C926.1953125,528.8333333333333,926.1953125,546.6666666666666,926.1953124999999,555.5833333333334L926.1953125,564.5" id="edge15" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="907.234375" y="521.25" width="39.453125" height="22"/><text class="label" x="926.1953125" y="537.75" fill="red" text-anchor="middle">allOf</text></g><path d="M1140.28515625,605.5L1140.28515625,614.4166666666666C1140.28515625,623.3333333333333,1140.28515625,641.1666666666666,1105.6100260416665,655.9895396163877C1070.9348958333333,670.8124125661086,1001.5846354166665,682.6248251322171,966.9095052083333,688.5310314152714L932.234375,694.4372376983257" id="edge16" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1017.296875" y="660.203125" width="39.453125" height="22"/><text class="label" x="1036.259765625" y="676.7186188491628" fill="red" text-anchor="middle">allOf</text></g><path d="M1046.3155212402344,467.5L1062.7036895751953,474.7499999999999C1079.0918579101562,481.99999999999994,1111.8681945800781,496.49999999999994,1146.5831858317056,513.0974593003427C1181.2981770833333,529.6949186006856,1217.9518229166665,548.3898372013713,1236.2786458333333,557.7372965017141L1254.60546875,567.084755802057" id="edge17" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1180.671875" y="522.53125" width="39.453125" height="22"/><text class="label" x="1199.625" y="539.0423779010284" fill="red" text-anchor="middle">allOf</text></g><path d="M1226.58203125,467.5L1226.58203125,474.7499999999999C1226.58203125,481.99999999999994,1226.58203125,496.49999999999994,1216.183646537162,512.6666666666666C1205.7852618243242,528.8333333333333,1184.9884923986485,546.6666666666666,1174.5901076858108,555.5833333333334L1164.191722972973,564.5" id="edge18" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1176.4375" y="521.25" width="39.453125" height="22"/><text class="label" x="1195.3868771114865" y="537.75" fill="red" text-anchor="middle">allOf</text></g><path d="M2161.7890625,348.1513247948944L2104.597005208333,353.95943732907864C2047.4049479166665,359.7675498632629,1933.020833333333,371.3837749316314,1875.8287760416665,384.4418874658157C1818.6367187499998,397.5,1818.6367187499998,412,1818.6367187499995,419.24999999999994L1818.63671875,426.5" id="edge19" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="1799.6875" y="388.25" width="39.453125" height="22"/><text class="label" x="1818.63671875" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M2200.8793355082416,358L2187.506868131868,362.16666666666663C2174.1344007554944,366.3333333333333,2147.389466002747,374.66666666666663,2134.0169986263736,386.0833333333333C2120.64453125,397.5,2120.64453125,412,2120.64453125,419.24999999999994L2120.64453125,426.5" id="edge20" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="2101.6875" y="388.25" width="39.453125" height="22"/><text class="label" x="2120.64453125" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M2334.344050480769,358L2348.0985576923076,362.16666666666663C2361.8530649038457,366.3333333333333,2389.362079326923,374.66666666666663,2403.1165865384614,386.0833333333333C2416.87109375,397.5,2416.87109375,412,2416.87109375,419.24999999999994L2416.87109375,426.5" id="edge21" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="2397.921875" y="388.25" width="39.453125" height="22"/><text class="label" x="2416.87109375" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M2371.5546875,348.18972306076915L2428.478515625,353.99143588397425C2485.40234375,359.7931487071794,2599.25,371.3965743535897,2656.173828125,384.44828717679485C2713.09765625,397.5,2713.09765625,412,2713.09765625,419.24999999999994L2713.09765625,426.5" id="edge22" class="relation" marker-start="url(#extensionStart)"/><g class="classLabel"><rect class="box" x="2694.140625" y="388.25" width="39.453125" height="22"/><text class="label" x="2713.09765625" y="404.75" fill="red" text-anchor="middle">allOf</text></g><path d="M193.53515625,486L191.58203125,490.16666666666663C189.62890625,494.3333333333333,185.72265625,502.66666666666663,191.91612999718467,510.99999999999994C198.10960374436937,519.3333333333333,214.40280123873873,527.6666666666666,222.5493999859234,531.8333333333334L230.69599873310813,536" id="edge23" class="relation" marker-end="url(#dependencyEnd)"/><path d="M211.1737060546875,486L211.10504150390625,490.16666666666663C211.036376953125,494.3333333333333,210.8990478515625,502.66666666666663,199.13310008006053,513.5C187.36715230855856,524.3333333333333,163.97258586711712,537.6666666666666,152.2753026463964,544.3333333333334L140.57801942567568,551" id="edge24" class="relation" marker-end="url(#dependencyEnd)"/><path d="M273.810791015625,486L280.4341227213542,490.16666666666663C287.0574544270833,494.3333333333333,300.30411783854163,502.66666666666663,336.52836100260413,515.4243229717239C372.75260416666663,528.181979276781,431.9544270833333,545.3639585535622,461.5553385416667,553.9549481919528L491.15625,562.5459378303433" id="edge25" class="relation" marker-end="url(#dependencyEnd)"/><path d="M462.02923583984375,467.5L464.41433715820307,474.7499999999999C466.7994384765625,481.99999999999994,471.56964111328125,496.49999999999994,465.517814292564,507.9166666666666C459.4659874718468,519.3333333333333,442.5921311936936,527.6666666666666,434.155203054617,531.8333333333334L425.7182749155405,536" id="edge26" class="relation" marker-end="url(#dependencyEnd)"/><path d="M1085.86328125,341.4269903912148L1134.3984375,348.35582532601234C1182.93359375,355.28466026080986,1280.00390625,369.1423301304049,1328.5390625,386.7378317318691C1377.07421875,404.3333333333333,1377.07421875,425.66666666666663,1377.07421875,447C1377.07421875,468.3333333333333,1377.07421875,489.66666666666663,1377.07421875,512.6666666666666C1377.07421875,535.6666666666666,1377.07421875,560.3333333333333,1377.07421875,585C1377.07421875,609.6666666666666,1377.07421875,634.3333333333333,1353.71484375,652.1654338951537C1330.35546875,669.9975344569742,1283.63671875,680.9950689139484,1260.27734375,686.4938361424356L1236.91796875,691.9926033709228" id="edge27" class="relation" marker-end="url(#dependencyEnd)"/><path d="M1085.86328125,340.1871551015616L1158.9075520833333,347.3226292513013C1231.9518229166665,354.45810340104106,1378.0403645833333,368.7290517005205,1451.0846354166667,383.11452585026024C1524.12890625,397.5,1524.12890625,412,1524.12890625,419.24999999999994L1524.12890625,426.5" id="edge28" class="relation" marker-end="url(#dependencyEnd)"/><path d="M1236.91796875,690.2554916050813L1240.8068576388887,689.212909670901C1244.6957465277778,688.1703277367208,1252.4735243055554,686.0851638683604,1257.3346354166667,685.0425819341802C1262.1957465277778,684,1264.1401909722222,684,1266.0846354166665,687.4166666666666C1268.029079861111,690.8333333333333,1269.9735243055557,697.6666666666666,1269.9735243055557,704.5C1269.9735243055557,711.3333333333333,1268.029079861111,718.1666666666666,1266.0846354166665,721.5833333333334C1264.1401909722222,725,1262.1957465277778,725,1257.3346354166667,723.9574180658198C1252.4735243055554,722.9148361316395,1244.6957465277778,720.8296722632791,1240.806857638889,719.787090329099L1236.91796875,718.7445083949187" id="edge29" class="relation" marker-end="url(#dependencyEnd)"/><path d="M726.75390625,605.5L726.7539062499999,614.4166666666666C726.75390625,623.3333333333333,726.75390625,641.1666666666666,741.3079427083333,654.6065441091456C755.8619791666666,668.0464215516245,784.9700520833333,677.0928431032489,799.5240885416666,681.6160538790612L814.078125,686.1392646548734" id="edge30" class="relation" marker-end="url(#dependencyEnd)"/><path d="M1818.63671875,467.5L1818.6367187499995,474.7499999999999C1818.6367187499998,481.99999999999994,1818.6367187499998,496.49999999999994,1736.3398437499998,515.264268833087C1654.0429687499998,534.0285376661743,1489.44921875,557.0570753323486,1407.15234375,568.5713441654357L1324.85546875,580.085612998523" id="edge31" class="relation" marker-end="url(#dependencyEnd)"/></svg>
+<!--<p>classDiagram
+Response &lt;|-- SearchResponse : allOf
+Identifiable &lt;|-- Response : allOf
+SearchResultsAnswer &lt;|-- Entities : allOf
+SearchResultsAnswer &lt;|-- Places : allOf
+Answer &lt;|-- SearchResultsAnswer : allOf
+ResponseBase &lt;|-- Identifiable : allOf
+Response &lt;|-- Answer : allOf
+Response &lt;|-- ErrorResponse : allOf
+Response &lt;|-- Thing : allOf
+MediaObject &lt;|-- ImageObject : allOf
+Thing &lt;|-- Place : allOf
+Thing &lt;|-- Organization : allOf
+Thing &lt;|-- CreativeWork : allOf
+Thing &lt;|-- Intangible : allOf
+ContractualRulesContractualRule &lt;|-- ContractualRulesAttribution : allOf
+CreativeWork &lt;|-- MediaObject : allOf
+StructuredValue &lt;|-- PostalAddress : allOf
+CreativeWork &lt;|-- License : allOf
+Intangible &lt;|-- StructuredValue : allOf
+ContractualRulesAttribution &lt;|-- ContractualRulesLicenseAttribution : allOf
+ContractualRulesAttribution &lt;|-- ContractualRulesLinkAttribution : allOf
+ContractualRulesAttribution &lt;|-- ContractualRulesMediaAttribution : allOf
+ContractualRulesAttribution &lt;|-- ContractualRulesTextAttribution : allOf
+SearchResponse --&gt; QueryContext
+SearchResponse : QueryContext queryContext
+SearchResponse --&gt; Entities
+SearchResponse : Entities entities
+SearchResponse --&gt; Places
+SearchResponse : Places places
+Response : Array&lt;ContractualRulesContractualRule&gt; contractualRules
+Response : string webSearchUrl
+QueryContext : string originalQuery
+QueryContext : string alteredQuery
+QueryContext : string alterationOverrideQuery
+QueryContext : boolean adultIntent
+QueryContext : boolean askUserForLocation
+Entities : string queryScenario
+Entities : Array&lt;Thing&gt; value
+Places : Array&lt;Thing&gt; value
+SearchResultsAnswer --&gt; QueryContext
+Thing --&gt; ImageObject
+Thing --&gt; EntitiesEntityPresentationInfo
+ContractualRulesContractualRule : string targetPropertyName discriminator
+ContractualRulesContractualRule : string _type discriminator
+ImageObject --&gt; ImageObject
+Place --&gt; PostalAddress
+ResponseBase : string _type discriminator
+ContractualRulesLicenseAttribution --&gt; License</p>
+-->
